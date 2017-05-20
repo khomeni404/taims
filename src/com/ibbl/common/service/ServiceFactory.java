@@ -1,5 +1,6 @@
 package com.ibbl.common.service;
 
+import com.ibbl.incident.service.IncidentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -16,4 +17,7 @@ public class ServiceFactory {
 
     @Autowired
     public CommonService commonService;
+
+    @Autowired
+    public IncidentService incidentService;
 }

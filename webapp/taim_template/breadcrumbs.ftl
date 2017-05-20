@@ -4,11 +4,11 @@
     </script>
 
     <ul class="breadcrumb">
-        <li>
+        <#--<li>
             <i class="ace-icon fa fa-home home-icon"></i>
             <a href="#">Home</a>
-        </li>
-        <li class="active">Dashboard</li>
+        </li>-->
+        <li class="active"><b style="font-size: 15px; color: #4c2999">${title!}</b></li>
     </ul><!-- /.breadcrumb -->
 
     <div class="nav-search" id="nav-search">

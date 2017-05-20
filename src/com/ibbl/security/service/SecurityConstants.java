@@ -10,9 +10,13 @@ import java.util.Map;
 
 public interface SecurityConstants {
 
+    String SecuritySessionBean_ser_path =  "D:\\cloud\\doc\\taims\\SecuritySessionBean.ser";
+    //String SecuritySessionBean_ser_path =  "C:\\Users\\core-khomeni\\Downloads\\taims\\src\\com\\ibbl\\security\\resources\\SecuritySessionBean.ser";
+
     String SESSION_USER = "session.user";
-    String SESSION_USER_OID = "session.user.oid";
-    String SESSION_USER_USERNAME = "session.user.username";
+    String SESSION_USER_ID = "session.user.id";
+    String SESSION_USER_CASM_OID = "session.user.casm.oid";
+    String SESSION_USER_CASM_USER_ID = "session.user.username";
     String SESSION_USER_GRANTED_ACTIONS = "session.user.actions";
     String SESSION_USER_GRANTED_MAPPINGS = "session.user.actions.mappings";
     String REQUEST_MAPPING = "RequestMapping";

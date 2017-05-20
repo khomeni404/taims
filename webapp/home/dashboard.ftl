@@ -1,5 +1,5 @@
 <#import "../taim_template/taims_layout.ftl" as layout>
-<@layout.taims_layout "Test" >
+<@layout.taims_layout "${(title)!}" "${(username)!}" "${(userId)!}" "${(userName)!}">
     <#assign ctx = rc.getContextPath()/>
 <div class="row">
     <div class="col-lg-12 text-center">
@@ -7,7 +7,8 @@
             <button class="close" data-dismiss="alert">
                 <i class="ace-icon fa fa-times"></i>
             </button>
-            Welcome to Task And Issue Management System (TAIMS)
+            ${message!'Welcome to Task And Issue Management System (TAIMS)'}
+
         </div>
     </div>
 </div>

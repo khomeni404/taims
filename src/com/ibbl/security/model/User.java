@@ -24,14 +24,6 @@ public class User implements Serializable{
     @Column(name = "name")
     private String name;
 
-    @Column(name = "username")
-    private String username;
-
-    @Temporal(TemporalType.DATE)
-    @Column(name = "last_logged")
-    private Date lastLogin;
-
-
     @Transient
     public String getDiscriminatorValue(){
         DiscriminatorValue val = this.getClass().getAnnotation( DiscriminatorValue.class );
@@ -59,19 +51,4 @@ public class User implements Serializable{
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Date getLastLogin() {
-        return lastLogin;
-    }
-
-    public void setLastLogin(Date lastLogin) {
-        this.lastLogin = lastLogin;
-    }
 }

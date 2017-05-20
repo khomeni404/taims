@@ -20,41 +20,41 @@ public interface CommonService {
 
     boolean delete(Object model);
 
-    <MODEL> List<MODEL> findAll(Class<MODEL> clazz);
+    <PO> List<PO> findAll(Class<PO> clazz);
 
-    public <MODEL> List<MODEL> findAll(Class<MODEL> clazz, Order order);
+    public <PO> List<PO> findAll(Class<PO> clazz, Order order);
 
-    <MODEL> List<MODEL> findAll(Class<MODEL> clazz, List<String> projections);
+    <PO> List<PO> findAll(Class<PO> clazz, List<String> projections);
 
-    <MODEL> List<MODEL> findAll(Class<MODEL> clazz, int start, int limit);
+    <PO> List<PO> findAll(Class<PO> clazz, int start, int limit);
 
-    <MODEL> List<MODEL> findAll(Class<MODEL> clazz, int start, int limit, List<String> projections);
+    <PO> List<PO> findAll(Class<PO> clazz, int start, int limit, List<String> projections);
 
-    <MODEL> List<MODEL> findAll(Class<MODEL> clazz, Boolean active);
+    <PO> List<PO> findAll(Class<PO> clazz, Boolean active);
 
-    <MODEL> List<MODEL> findAll(Class<MODEL> clazz, String propertyName, Object propertyValue);
+    <PO> List<PO> findAll(Class<PO> clazz, String propertyName, Object propertyValue);
 
-    <MODEL> List<MODEL> findAll(Class<MODEL> clazz, String aliasModel, String propertyName, Object propertyValue);
+    <PO> List<PO> findAll(Class<PO> clazz, String aliasModel, String propertyName, Object propertyValue);
 
-    <MODEL> List<MODEL> findAll(Class<MODEL> clazz, Map<String, Object> paramValueMap);
+    <PO> List<PO> findAll(Class<PO> clazz, Map<String, Object> paramValueMap);
 
-    <MODEL> List<MODEL> searchBy_name(Class<MODEL> clazz, String text);
+    <PO> List<PO> searchBy_name(Class<PO> clazz, String text);
 
-    <MODEL> List<MODEL> searchBy_name_nameBN(Class<MODEL> clazz, String text);
+    <PO> List<PO> searchBy_name_nameBN(Class<PO> clazz, String text);
 
-    <MODEL> MODEL get(Class<MODEL> clazz, Long id);
+    <PO> PO get(Class<PO> clazz, Long id);
 
-    <MODEL> MODEL get(Class<MODEL> clazz, Long id, List<String> projections);
+    <PO> PO get(Class<PO> clazz, Long id, List<String> projections);
 
-    <MODEL> MODEL get(Class<MODEL> clazz, String propertyName, Object propertyValue);
+    <PO> PO get(Class<PO> clazz, String propertyName, Object propertyValue);
 
-    <MODEL> MODEL get(Class<MODEL> clazz, String propertyName1, Object propertyValue1, String propertyName2, Object propertyValue2);
+    <PO> PO get(Class<PO> clazz, String propertyName1, Object propertyValue1, String propertyName2, Object propertyValue2);
 
-    <MODEL> MODEL get(Class<MODEL> clazz, String aliasModel, String propertyName, Object propertyValue);
+    <PO> PO get(Class<PO> clazz, String aliasModel, String propertyName, Object propertyValue);
 
-    <MODEL> MODEL get(Class<MODEL> clazz, String aliasModel, String aliasPropertyName, Object aliasPropertyValue, String propertyName, Object propertyValue);
+    <PO> PO get(Class<PO> clazz, String aliasModel, String aliasPropertyName, Object aliasPropertyValue, String propertyName, Object propertyValue);
 
-    <MODEL> MODEL get(Class<MODEL> clazz, Long id, Boolean active);
+    <PO> PO get(Class<PO> clazz, Long id, Boolean active);
 
     Integer count(Class clazz);
 

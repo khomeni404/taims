@@ -1,6 +1,6 @@
 package com.ibbl.aop;
 
-import com.ibbl.security.service.AuthorizationServiceImpl;
+import com.ibbl.security.service.AuthAuthTokenService;
 import com.ibbl.security.service.SecurityConstants;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -23,7 +23,7 @@ public class AuthorizationAspect {
 
 
     @Autowired
-    private AuthorizationServiceImpl authorizationServiceImpl;
+    private AuthAuthTokenService authService;
 
     String operationName = null;
     String requestMapping = null;
@@ -54,19 +54,19 @@ public class AuthorizationAspect {
 
         requestMapping = annotations[annotationIndex].toString();
         operationName = proceedJoinPoint.getSignature().getName();
-        //boolean isAllowed = authorizationService.checkAuthorization(operationName);
-        boolean isAllowed = authorizationServiceImpl.checkAuthorizationUsingMapping(operationName);
+        //boolean isAllowed = authorizationService.checkAuthorizationUsingAction(operationName);
+        boolean isAllowed = authService.checkAuthorizationUsingMapping(operationName);
 
 
-        // UserBean sessionUser = SessionUtil.getSessionUser();
+        // LoggedUser sessionUser = SessionUtil.getSessionUser();
         if (isAllowed) {
             return proceedJoinPoint.proceed();
         } else {
             Map<String, Object> map = new HashMap<>();
             map.put("PageTitle", "Sorry");
             map.put("message", "You have no permission to execute this operation.");
-            //return new ModelAndView("/home/no_privilege", map);
-            return proceedJoinPoint.proceed();
+            return new ModelAndView("/home/no_privilege", map);
+//            return proceedJoinPoint.proceed();
         }
 
 

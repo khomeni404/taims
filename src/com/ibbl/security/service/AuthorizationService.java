@@ -1,10 +1,10 @@
 package com.ibbl.security.service;
 
 import com.ibbl.security.model.Action;
+import com.ibbl.security.model.User;
 import com.ibbl.util.ActionResult;
 import ibbl.security.common.bean.AuthenticationBean;
 import ibbl.security.common.bean.PrivilegeBean;
-import ibbl.security.common.bean.UserBean;
 
 import java.util.List;
 
@@ -21,9 +21,11 @@ public interface AuthorizationService {
 
     ActionResult staticAuthenticate(String username, String password);
 
-    void setAuthenticationToken(UserBean principal, List<PrivilegeBean> privilegeBeanList);
+    void setAuthenticationToken(User principal);
 
-    Action checkAuthorization(String mapping);
+    void setAuthorizationToken(List<PrivilegeBean> privilegeBeanList);
+
+    Action checkAuthorizationUsingAction(String mapping);
 
     boolean checkAuthorizationUsingMapping(String mapping);
 

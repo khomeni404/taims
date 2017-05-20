@@ -1,5 +1,6 @@
 package com.ibbl.common.dao;
 
+import com.ibbl.incident.dao.IncidentDAO;
 import com.ibbl.security.dao.SecurityDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,4 +20,8 @@ public class DaoFactory {
 
     @Autowired
     public SecurityDAO securityDAO;
+
+    @Autowired
+    public IncidentDAO incidentDAO;
+
 }

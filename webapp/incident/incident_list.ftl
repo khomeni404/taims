@@ -1,5 +1,5 @@
 <#import "../taim_template/taims_layout.ftl" as layout>
-<@layout.taims_layout "Test" >
+<@layout.taims_layout  "${(title)!}" "${(username)!}" "${(userId)!}" "${(userName)!}" >
     <#assign ctx = rc.getContextPath()/>
 <div class="row">
     <div class="col-xs-12">
@@ -37,7 +37,7 @@
                 </td>
 
                 <td>
-                    <a href="#">view</a>
+                    <a href="${ctx}/incident/viewIncident.ibbl?id=${(incident.id)!}">view</a>
                 </td>
                 <td>${(incident.id)!}</td>
                 <td>${(incident.lossAmt)!}</td>

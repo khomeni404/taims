@@ -1,7 +1,8 @@
 package com.ibbl.security.service;
 
 import com.ibbl.security.model.Action;
-import ibbl.security.common.bean.UserBean;
+import com.ibbl.security.model.LoggedUser;
+import org.apache.commons.validator.GenericValidator;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -21,13 +22,31 @@ public class SessionUtil {
         return attr.getRequest().getSession(true);
     }
 
-    public static UserBean getSessionUser() {
+    public static LoggedUser getSessionUser() {
         Object user = getSession().getAttribute(SecurityConstants.SESSION_USER);
-        if (user instanceof UserBean) {
-            return (UserBean) user;
+        if (user instanceof LoggedUser) {
+            return (LoggedUser) user;
         }
         return null;
     }
+
+    public static String getCasmUserid() {
+        String userid = (String) getSession().getAttribute(SecurityConstants.SESSION_USER_CASM_USER_ID);
+        if (!GenericValidator.isBlankOrNull(userid)) {
+            return userid;
+        }
+        return null;
+    }
+
+
+    public static String getCasmUserOID() {
+        String userOid = (String) getSession().getAttribute(SecurityConstants.SESSION_USER_CASM_OID);
+        if (!GenericValidator.isBlankOrNull(userOid)) {
+            return userOid;
+        }
+        return null;
+    }
+
 
     @SuppressWarnings("unchecked")
     public static List<Action> getSessionUsersActions() {

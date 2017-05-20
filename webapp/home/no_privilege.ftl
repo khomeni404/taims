@@ -1,5 +1,5 @@
 <#import "../taim_template/taims_layout.ftl" as layout>
-<@layout.taims_layout "Test" >
+<@layout.taims_layout  "TAIMS" "user11" "12" "Mak"  >
     <#assign ctx = rc.getContextPath()/>
 
 <div class="row">
@@ -12,7 +12,7 @@
             <hr />
             <h4 class="lighter smaller" style="font-weight: bolder">
                 Please ensure your CASM
-                <i class="ace-icon fa fa-wrench icon-animated-wrench bigger-125"></i>
+               Privilege <i class="ace-icon fa fa-wrench icon-animated-wrench bigger-125"></i>
                 settings !
             </h4>
 

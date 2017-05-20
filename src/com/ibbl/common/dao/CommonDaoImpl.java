@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author Khomeni
- * Created on : 16-May-17
+ *         Created on : 16-May-17
  */
 
 
@@ -110,12 +110,8 @@ public class CommonDaoImpl implements CommonDAO {
         DetachedCriteria criteria = DetachedCriteria.forClass(clazz)
                 .add(Restrictions.eq(propertyName1, propertyValue1))
                 .add(Restrictions.eq(propertyName2, propertyValue2));
-        try {
-            Object model = hibernateTemplate.findByCriteria(criteria).get(0);
-            return Primitives.wrap(clazz).cast(model);
-        } catch (IndexOutOfBoundsException e) {
-            return null;
-        }
+        Object model = hibernateTemplate.findByCriteria(criteria).get(0);
+        return model == null ? null : Primitives.wrap(clazz).cast(model);
     }
 
     @Override
@@ -254,6 +250,15 @@ public class CommonDaoImpl implements CommonDAO {
     public <MODEL> List<MODEL> findAll(Class<MODEL> clazz, String propertyName, Object propertyValue) {
         DetachedCriteria criteria = DetachedCriteria.forClass(clazz)
                 .add(Restrictions.eq(propertyName, propertyValue));
+        return (List<MODEL>) hibernateTemplate.findByCriteria(criteria);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public <MODEL> List<MODEL> findAll(Class<MODEL> clazz, String propertyName1, Object propertyValue1, String propertyName2, Object propertyValue2) {
+        DetachedCriteria criteria = DetachedCriteria.forClass(clazz)
+                .add(Restrictions.eq(propertyName1, propertyValue1))
+                .add(Restrictions.eq(propertyName2, propertyValue2));
         return (List<MODEL>) hibernateTemplate.findByCriteria(criteria);
     }
 

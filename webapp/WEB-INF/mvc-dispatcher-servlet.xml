@@ -65,7 +65,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.default_schema">${hibernate.default_schema}</prop>
+                <!--<prop key="hibernate.default_schema">${hibernate.default_schema}</prop>-->
                 <prop key="hibernate.dialect">${jdbc.hibernate.dialect}</prop>
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl_auto}</prop>
@@ -100,7 +100,7 @@
 
     <!--Enable the @AspectJ support-->
      <aop:aspectj-autoproxy proxy-target-class="true">
-         <!--<aop:include name="authenticationAspect"/>-->
-         <!--<aop:include name="authorizationAspect"/>-->
+         <aop:include name="authenticationAspect"/>
+         <aop:include name="authorizationAspect"/>
      </aop:aspectj-autoproxy>
 </beans>

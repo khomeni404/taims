@@ -1,11 +1,11 @@
-<#macro taims_layout title="">
+<#macro taims_layout title username userId userName>
     <#assign  ctx = rc.getContextPath()>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title>TAIMS</title>
+    <title>${title!}</title>
     <#include "resources.ftl"/>
 </head>
 
@@ -58,8 +58,8 @@
         <div class="footer-inner">
             <div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">IBBL</span>
-							Application &copy; 2013-2014
+							<span class="blue bolder">TAIMS</span>
+							IBBL &copy; 2013-2014
 						</span>
                 &nbsp; &nbsp;
             </div>

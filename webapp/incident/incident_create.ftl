@@ -1,127 +1,95 @@
 <#import "../taim_template/taims_layout.ftl" as layout>
-<@layout.taims_layout "Test" >
+<@layout.taims_layout  "${(title)!}" "${(username)!}" "${(userId)!}" "${(userName)!}" >
     <#assign ctx = rc.getContextPath()/>
 
 <div class="row">
-    <div class="col-xs-12">
-        <!-- PAGE CONTENT BEGINS -->
-        <form action="${ctx}/incident/saveIncident.ibbl" method="POST" class="form-horizontal" role="form">
+    <form action="${ctx}/incident/saveIncident.ibbl" method="POST" class="form-horizontal" role="form">
 
-            <input type="hidden" name="type" value="1">
-            <input type="hidden" name="lossAmt" value="45000">
-            <input type="hidden" name="incidentDate" value="10/05/2017">
-            <input type="hidden" name="reportingDate" value="18/05/2017">
-
+        <div class="col-xs-6">
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Text Field </label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Reference No </label>
 
                 <div class="col-sm-9">
-                    <input name="refNo" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+                    <input name="refNo" value="${refNo!}" type="text" id="form-field-1" placeholder=""
+                           class="col-xs-10 col-sm-5"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="incident-type"> Incident Type</label>
+
+                <div class="col-sm-9">
+                        <select name="type" class="chosen-select form-control" id="incident-type" data-placeholder="Choose a State...">
+                        <option value="">&nbsp;</option>
+                        <#list TU.getIncidentTypeList() as type>
+                            <option value="${type?index}">${type}</option>
+                        </#list>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="user-name"> Initiator Name </label>
+
+                <div class="col-sm-9">
+                    <input type="text" readonly=""  value="${userName!}" id="user-name" placeholder="Text Field"
+                           class="form-control"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Full Length </label>
+                <label class="col-sm-3 control-label no-padding-right" for="incident-date"> Incident Date </label>
 
                 <div class="col-sm-9">
-                    <input type="text" id="form-field-1-1" placeholder="Text Field" class="form-control" />
-                </div>
-            </div>
+                    <div class="input-group"><span class="input-group-addon"> <i class="fa fa-calendar bigger-110"></i> </span>
+                        <input name="incidentDate" value="10/02/2017" class="date-picker  col-sm-4" id="incident-date" type="text"
+                               data-date-format="dd-mm-yyyy"/>
 
-            <div class="space-4"></div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Password Field </label>
-
-                <div class="col-sm-9">
-                    <input type="password" id="form-field-2" placeholder="Password" class="col-xs-10 col-sm-5" />
-											<span class="help-inline col-xs-12 col-sm-7">
-												<span class="middle">Inline help text</span>
-											</span>
-                </div>
-            </div>
-
-            <div class="space-4"></div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> Readonly field </label>
-
-                <div class="col-sm-9">
-                    <input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" value="This text field is readonly!" />
-											<span class="help-inline col-xs-12 col-sm-7">
-												<label class="middle">
-                                                    <input class="ace" type="checkbox" id="id-disable-check" />
-                                                    <span class="lbl"> Disable it!</span>
-                                                </label>
-											</span>
-                </div>
-            </div>
-
-            <div class="space-4"></div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Relative Sizing</label>
-
-                <div class="col-sm-9">
-                    <input class="input-sm" type="text" id="form-field-4" placeholder=".input-sm" />
-                    <div class="space-2"></div>
-
-                    <div class="help-block" id="input-size-slider"></div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-5">Grid Sizing</label>
-
-                <div class="col-sm-9">
-                    <div class="clearfix">
-                        <input class="col-xs-1" type="text" id="form-field-5" placeholder=".col-xs-1" />
                     </div>
 
-                    <div class="space-2"></div>
-
-                    <div class="help-block" id="input-span-slider"></div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right">Input with Icon</label>
+                <label class="col-sm-3 control-label no-padding-right" for="id-date-picker-1"> Reporting Date</label>
 
                 <div class="col-sm-9">
-											<span class="input-icon">
-												<input type="text" id="form-field-icon-1" />
-												<i class="ace-icon fa fa-leaf blue"></i>
-											</span>
+                    <div class="input-group"><span class="input-group-addon"> <i class="fa fa-calendar bigger-110"></i> </span>
+                        <input name="reportingDate" value="${reportingDate?string('dd/MM/yyyy')}" class="date-picker  col-sm-4" id="id-date-picker-1" type="text"
+                               data-date-format="dd-mm-yyyy"/>
 
-											<span class="input-icon input-icon-right">
-												<input type="text" id="form-field-icon-2" />
-												<i class="ace-icon fa fa-leaf green"></i>
-											</span>
-                </div>
-            </div>
-
-            <div class="space-4"></div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-6">Tooltip and help button</label>
-
-                <div class="col-sm-9">
-                    <input data-rel="tooltip" type="text" id="form-field-6" placeholder="Tooltip on hover" title="Hello Tooltip!" data-placement="bottom" />
-                    <span class="help-button" data-rel="popover" data-trigger="hover" data-placement="left" data-content="More details." title="Popover on hover">?</span>
-                </div>
-            </div>
-
-            <div class="space-4"></div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-tags">Tag input</label>
-
-                <div class="col-sm-9">
-                    <div class="inline">
-                        <input type="text" name="tags" id="form-field-tags" value="Tag Input Control" placeholder="Enter tags ..." />
                     </div>
+
                 </div>
             </div>
+
+            <div class="space-4"></div>
+
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="loss-amt"> Appox. Loss Amt. </label>
+
+                <div class="col-sm-9">
+                    <input name="lossAmt" type="number" value="125400" id="loss-amt" placeholder="Text Field" class=" col-sm-5"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="incident-started-from">Duration </label>
+
+                <div class="col-sm-4">
+                    <input name="startedFrom" id="incident-started-from" type="text" class="form-control" />
+                </div>
+                <label class="col-sm-1 control-label text-center" for="incident-stopped-at">to</label>
+
+                <div class="col-sm-4">
+                        <input name="stoppedAt" id="incident-stopped-at" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="space-4"></div>
+
+
 
             <div class="clearfix form-actions">
                 <div class="col-md-offset-3 col-md-9">
@@ -139,9 +107,61 @@
             </div>
 
 
-        </form>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="col-sm-12 " for="incident-details">Details of Incident(with Effect of to
+                    Business)</label>
+            </div>
 
-    </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <textarea name="details" id="incident-details" class="autosize-transition form-control">This is incident Details</textarea>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <div class="inline">
+                        <div class="checkbox">
+                            <label>
+                                <input name="noControllingApparatus" class="ace ace-checkbox-2  <#--input-lg-->" type="checkbox" onclick="$('.control-already-exists').toggle()"/>
+                                <span class="lbl"> Preventative Control did not exists</span>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group control-already-exists">
+                <label class="col-sm-12 " for="failure-reasons">Control Details</label>
+            </div>
+
+            <div class="form-group control-already-exists">
+                <div class="col-sm-12">
+                    <textarea name="failureReasons" id="failure-reasons" class="autosize-transition form-control">This is a reason to fails</textarea>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-12 " for="preventative-controls">Preventative Controls Employed for Future Re-occurrence</label>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <textarea name="preventativeControls" id="preventative-controls" class="autosize-transition form-control">This controls has been employed. Do u like it !</textarea>
+
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 
 </@layout.taims_layout>
+
+<script>
+
+</script>

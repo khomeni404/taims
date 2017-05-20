@@ -280,7 +280,7 @@
                     <img class="nav-user-photo" src="../resources/assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
-									Khomeni
+								${userName!'Khomeni'}
 								</span>
 
                     <i class="ace-icon fa fa-caret-down"></i>
@@ -306,7 +306,7 @@
                     <li>
                         <a href="${ctx}/home/logout.ibbl">
                             <i class="ace-icon fa fa-power-off"></i>
-                            Logout
+                            Logout (${username!})
                         </a>
                     </li>
                 </ul>

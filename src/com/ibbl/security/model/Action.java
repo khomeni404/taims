@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 
 @Entity
-@Table(name = "TAIMS_ACTION")
+@Table(name = "TAIMS_SEC_ACTION")
 public class Action implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,8 +20,6 @@ public class Action implements Serializable {
 
     @Column(name = "action_mapping")
     private String mapping;
-
-
 
     @Column(name = "privilege_id")
     private String privilegeID;

@@ -2,7 +2,7 @@ package com.ibbl.security;
 
 
 import com.ibbl.common.DateUtil;
-import com.ibbl.security.service.AuthorizationServiceImpl;
+import com.ibbl.security.service.AuthAuthTokenService;
 import com.ibbl.util.ActionResult;
 import ibbl.security.common.bean.AuthenticationBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 /**
  * @author Khomeni
@@ -24,7 +23,7 @@ import java.util.Map;
 @RequestMapping("/auth/")
 public class AuthenticationController {
     @Autowired
-    private AuthorizationServiceImpl authService;
+    private AuthAuthTokenService authService;
 
     @RequestMapping(method = RequestMethod.POST, value = "/authenticateUser.ibbl")
     public ModelAndView authenticateUser(@RequestParam("username") String username,
@@ -38,10 +37,10 @@ public class AuthenticationController {
         authBean.setWorkStationIPAddress(httpServletRequest.getRemoteAddr());
         authBean.setSignInTime(DateUtil.getSystemDate());
 
-        ActionResult result = authService.casmAuthenticate(authBean);
-//        ActionResult result = authService.staticAuthenticate(username, password);
+//        ActionResult result = authService.casmAuthenticate(authBean);
+        ActionResult result = authService.staticAuthenticate(username, password);
         if (result.isSuccess()) {
-            return new ModelAndView("redirect:/home/dashboard.ibbl");
+            return new ModelAndView("redirect:/home/dashboard.ibbl", result.getMap());
         } else {
             return new ModelAndView("redirect:/home/dashboard.ibbl");
 //            Map<String, Object> map = result.getMap();

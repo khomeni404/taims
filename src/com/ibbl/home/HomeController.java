@@ -2,6 +2,7 @@ package com.ibbl.home;
 
 import com.ibbl.security.service.SecurityConstants;
 import com.ibbl.security.service.SessionUtil;
+import com.ibbl.util.ActionUtil;
 import com.ibbl.util.Utility;
 import org.apache.commons.validator.GenericValidator;
 import org.springframework.stereotype.Controller;
@@ -32,9 +33,7 @@ public class HomeController {
 
     @RequestMapping(value = "/dashboard.ibbl")
     public ModelAndView dashboard(@RequestParam(required = false) String message) {
-        Map<String, Object> modelMap = new HashMap<>();
-        modelMap.put("PageTitle", "Home");
-        modelMap.put("TU", new Utility());
+        Map<String, Object> modelMap = ActionUtil.getModelMap("TAIMS Home");
         modelMap.put("message", GenericValidator.isBlankOrNull(message) ? "Welcome  Home !" : message);
         return new ModelAndView("home/dashboard", modelMap);
 
@@ -44,8 +43,8 @@ public class HomeController {
     public ModelAndView logout(){
         HttpSession userSession = SessionUtil.getSession();
         userSession.removeAttribute(SecurityConstants.SESSION_USER);
-        userSession.removeAttribute(SecurityConstants.SESSION_USER_OID);
-        userSession.removeAttribute(SecurityConstants.SESSION_USER_USERNAME);
+        userSession.removeAttribute(SecurityConstants.SESSION_USER_CASM_OID);
+        userSession.removeAttribute(SecurityConstants.SESSION_USER_CASM_USER_ID);
         userSession.removeAttribute(SecurityConstants.SESSION_USER_GRANTED_ACTIONS);
         userSession.invalidate();
         return new ModelAndView("redirect:/");

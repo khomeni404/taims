@@ -3,12 +3,17 @@
 
 <!-- bootstrap & fontawesome -->
 <link rel="stylesheet" href="../resources/assets/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../resources/assets/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../resources/assets/css/bootstrap.min.css" />
 
 <link rel="stylesheet" href="../resources/assets/font-awesome/4.2.0/css/font-awesome.min.css" />
 
 <!-- page specific plugin styles -->
+<link rel="stylesheet" href="../resources/assets/css/jquery-ui.custom.min.css" />
+<link rel="stylesheet" href="../resources/assets/css/chosen.min.css" />
+<link rel="stylesheet" href="../resources/assets/css/datepicker.min.css" />
+<link rel="stylesheet" href="../resources/assets/css/bootstrap-timepicker.min.css" />
+<link rel="stylesheet" href="../resources/assets/css/daterangepicker.min.css" />
+<link rel="stylesheet" href="../resources/assets/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" href="../resources/assets/css/colorpicker.min.css" />
 
 <!-- text fonts -->
 <link rel="stylesheet" href="../resources/assets/fonts/fonts.googleapis.com.css" />

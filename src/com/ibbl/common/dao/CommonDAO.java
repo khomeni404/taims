@@ -51,6 +51,8 @@ public interface CommonDAO {
 
     <MODEL> List<MODEL> findAll(Class<MODEL> clazz, String propertyName, Object propertyValue);
 
+    <MODEL> List<MODEL> findAll(Class<MODEL> clazz, String propertyName1, Object propertyValue1, String propertyName2, Object propertyValue2);
+
     <MODEL> List<MODEL> findAll(Class<MODEL> clazz, String aliasModel, String propertyName, Object propertyValue);
 
     <MODEL> List<MODEL> findAll(Class<MODEL> clazz, Map<String, Object> propertyValueMap);

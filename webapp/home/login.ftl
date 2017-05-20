@@ -36,7 +36,7 @@
     <![endif]-->
 </head>
 
-<body class="login-layout">
+<body class="login-layout login-layout light-login">
 <div class="main-container">
     <div class="main-content">
         <div class="row">
@@ -45,8 +45,8 @@
                     <div class="center">
                         <h1>
                             <i class="ace-icon fa fa-leaf green"></i>
-                            <span class="red">IBBL</span>
-                            <span class="white" id="id-text2">TAIMS</span>
+                            <span class="red">TAIMS</span>
+                            <span class="grey" id="id-text2">IBBL</span>
                         </h1>
                         <h4 class="blue" id="id-company-text">&copy; Islami Bank Bangladesh Ltd.</h4>
                     </div>

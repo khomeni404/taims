@@ -1,6 +1,7 @@
 package com.ibbl.security.dao;
 
 import com.ibbl.security.model.Action;
+import com.ibbl.security.model.LoggedUser;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface SecurityDAO {
     List<Action> findAllActions(List<String> privilegeIDList);
 
     List<String> findAllActionMapping(List<String> privilegeIDList);
+
+    LoggedUser getLoggedUser(String userOID, String userID);
 }

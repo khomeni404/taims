@@ -28,7 +28,8 @@ public class SecurityService {
     public static SecuritySessionBean signIn(String username, String password) {
 
         try {
-            FileInputStream fin = new FileInputStream("C:\\Users\\core-khomeni\\Downloads\\taims\\src\\com\\ibbl\\security\\resources\\SecuritySessionBean.ser");
+            FileInputStream fin = new FileInputStream(SecurityConstants.SecuritySessionBean_ser_path);
+//            FileInputStream fin = new FileInputStream();
             ObjectInputStream oisBC = new ObjectInputStream(fin);
             SecuritySessionBean securitySessionBean = (SecuritySessionBean) oisBC.readObject();
             oisBC.close();

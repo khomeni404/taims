@@ -3,7 +3,6 @@ package com.ibbl.common.service;
 import com.ibbl.common.dao.DaoFactory;
 import com.ibbl.common.model.Document;
 import com.ibbl.util.ActionResult;
-import com.ibbl.util.SEUtil;
 import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -39,92 +38,92 @@ public class CommonServiceImpl extends DaoFactory implements CommonService {
     }
 
     @Override
-    public <MODEL> List<MODEL> findAll(Class<MODEL> clazz) {
+    public <PO> List<PO> findAll(Class<PO> clazz) {
         return commonDAO.findAll(clazz);
     }
 
     @Override
-    public <MODEL> List<MODEL> findAll(Class<MODEL> clazz, Order order) {
+    public <PO> List<PO> findAll(Class<PO> clazz, Order order) {
         return commonDAO.findAll(clazz, order);
     }
 
     @Override
-    public <MODEL> List<MODEL> findAll(Class<MODEL> clazz, List<String> projections) {
+    public <PO> List<PO> findAll(Class<PO> clazz, List<String> projections) {
         return commonDAO.findAll(clazz, projections);
     }
 
     @Override
-    public <MODEL> List<MODEL> findAll(Class<MODEL> clazz, int start, int limit) {
+    public <PO> List<PO> findAll(Class<PO> clazz, int start, int limit) {
         return commonDAO.findAll(clazz, start, limit);
     }
 
     @Override
-    public <MODEL> List<MODEL> findAll(Class<MODEL> clazz, int start, int limit, List<String> projections) {
+    public <PO> List<PO> findAll(Class<PO> clazz, int start, int limit, List<String> projections) {
         return commonDAO.findAll(clazz, start, limit, projections);
     }
 
     @Override
-    public <MODEL> List<MODEL> findAll(Class<MODEL> clazz, Boolean active) {
+    public <PO> List<PO> findAll(Class<PO> clazz, Boolean active) {
         return commonDAO.findAll(clazz, active);
     }
 
     @Override
-    public <MODEL> List<MODEL> findAll(Class<MODEL> clazz, String propertyName, Object propertyValue) {
+    public <PO> List<PO> findAll(Class<PO> clazz, String propertyName, Object propertyValue) {
         return commonDAO.findAll(clazz, propertyName, propertyValue);
     }
 
     @Override
-    public <MODEL> List<MODEL> findAll(Class<MODEL> clazz, String aliasModel, String propertyName, Object propertyValue) {
+    public <PO> List<PO> findAll(Class<PO> clazz, String aliasModel, String propertyName, Object propertyValue) {
         return commonDAO.findAll(clazz, aliasModel, propertyName, propertyValue);
     }
 
     @Override
-    public <MODEL> List<MODEL> findAll(Class<MODEL> clazz, Map<String, Object> propertyValueMap) {
+    public <PO> List<PO> findAll(Class<PO> clazz, Map<String, Object> propertyValueMap) {
         return commonDAO.findAll(clazz, propertyValueMap);
     }
 
     @Override
-    public <MODEL> List<MODEL> searchBy_name(Class<MODEL> clazz, String text) {
+    public <PO> List<PO> searchBy_name(Class<PO> clazz, String text) {
         return commonDAO.searchBy_name(clazz, text);
     }
 
     @Override
-    public <MODEL> List<MODEL> searchBy_name_nameBN(Class<MODEL> clazz, String text) {
+    public <PO> List<PO> searchBy_name_nameBN(Class<PO> clazz, String text) {
         return commonDAO.searchBy_name_nameBN(clazz, text);
     }
 
     @Override
-    public <MODEL> MODEL get(Class<MODEL> clazz, Long id) {
+    public <PO> PO get(Class<PO> clazz, Long id) {
         return commonDAO.get(clazz, id);
     }
 
     @Override
-    public <MODEL> MODEL get(Class<MODEL> clazz, Long id, List<String> projections) {
+    public <PO> PO get(Class<PO> clazz, Long id, List<String> projections) {
         return commonDAO.get(clazz, id, projections);
     }
 
     @Override
-    public <MODEL> MODEL get(Class<MODEL> clazz, String propertyName, Object propertyValue) {
+    public <PO> PO get(Class<PO> clazz, String propertyName, Object propertyValue) {
         return commonDAO.get(clazz, propertyName, propertyValue);
     }
     @Override
-    public <MODEL> MODEL get(Class<MODEL> clazz, String propertyName1, Object propertyValue1, String propertyName2, Object propertyValue2) {
+    public <PO> PO get(Class<PO> clazz, String propertyName1, Object propertyValue1, String propertyName2, Object propertyValue2) {
         return commonDAO.get(clazz, propertyName1, propertyValue1, propertyName2, propertyValue2);
     }
 
 
     @Override
-    public <MODEL> MODEL get(Class<MODEL> clazz, String aliasModel, String propertyName, Object propertyValue) {
+    public <PO> PO get(Class<PO> clazz, String aliasModel, String propertyName, Object propertyValue) {
         return commonDAO.get(clazz, aliasModel, propertyName, propertyValue);
     }
 
     @Override
-    public <MODEL> MODEL get(Class<MODEL> clazz, String aliasModel, String aliasPropertyName, Object aliasPropertyValue, String propertyName, Object propertyValue) {
+    public <PO> PO get(Class<PO> clazz, String aliasModel, String aliasPropertyName, Object aliasPropertyValue, String propertyName, Object propertyValue) {
         return commonDAO.get(clazz, aliasModel, aliasPropertyName, aliasPropertyValue, propertyName, propertyValue);
     }
 
     @Override
-    public <MODEL> MODEL get(Class<MODEL> clazz, Long id, Boolean active) {
+    public <PO> PO get(Class<PO> clazz, Long id, Boolean active) {
         return commonDAO.get(clazz, id, active);
     }
 

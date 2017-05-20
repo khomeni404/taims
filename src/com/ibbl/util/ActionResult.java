@@ -62,7 +62,6 @@ public class ActionResult {
         map.put("message", msg);
     }
 
-
     public ActionResult(boolean success, String msg) {
         this.success = success;
         this.msg = msg;

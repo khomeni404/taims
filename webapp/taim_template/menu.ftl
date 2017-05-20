@@ -37,6 +37,14 @@
 
                 <b class="arrow"></b>
             </li>
+            <li class="">
+                <a href="${ctx}/incident/createIncidentReview.ibbl">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Incident Review
+                </a>
+
+                <b class="arrow"></b>
+            </li>
 
             <li class="">
                 <a href="#" class="dropdown-toggle">
