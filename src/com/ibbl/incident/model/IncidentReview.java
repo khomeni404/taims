@@ -24,6 +24,9 @@ public class IncidentReview implements Serializable {
     private Long id;
 
     @ManyToOne
+    private Incident incident;
+
+    @ManyToOne
     @JoinColumn(name = "reviewer")
     private User reviewBy;
 
@@ -37,6 +40,9 @@ public class IncidentReview implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "review_date")
     private Date reviewDate;
+
+    @Column(name = "signed_as")
+    private String signedAs;
 
 
     public Long getId() {
@@ -61,6 +67,22 @@ public class IncidentReview implements Serializable {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public String getSignedAs() {
+        return signedAs;
+    }
+
+    public void setSignedAs(String signedAs) {
+        this.signedAs = signedAs;
+    }
+
+    public Incident getIncident() {
+        return incident;
+    }
+
+    public void setIncident(Incident incident) {
+        this.incident = incident;
     }
 
     public String getReviewNote() {

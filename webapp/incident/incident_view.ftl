@@ -144,6 +144,41 @@
         </button>
 
     </div>
+
+    <#if reviewList?has_content>
+    <div class="col-lg-12">
+        <div class="space"></div>
+
+        <div>
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th class="center"></th>
+                    <th class="center">Reviewer</th>
+                    <th class="center">Review Date</th>
+                    <th class="center">Signed As</th>
+                    <th class="center">Review Note</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <#list reviewList as review>
+                <tr>
+                    <td class="center">${review.id!}</td>
+
+                    <td class="text-left">
+                        <a href="#">${(review.reviewBy.name)!}</a>
+                    </td>
+                    <td class="center">${(review.reviewDate?string('dd/MM/yyyy'))!}</td>
+                    <td class="center">${review.signedAs!}</td>
+                    <td class="center">${review.reviewNote!}</td>
+                </tr>
+                </#list>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </#if>
 </div>
 
 </@layout.taims_layout>

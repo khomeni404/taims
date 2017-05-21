@@ -2,6 +2,8 @@ package com.ibbl.incident;
 
 import com.ibbl.common.service.ServiceFactory;
 import com.ibbl.incident.model.Incident;
+import com.ibbl.incident.model.IncidentReview;
+import com.ibbl.security.model.LoggedUser;
 import com.ibbl.util.ActionUtil;
 import com.ibbl.util.Utility;
 import org.apache.commons.validator.GenericValidator;
@@ -91,7 +93,7 @@ public class IncidentController extends ServiceFactory {
             modelMap.put("message", message);
         Incident incident = commonService.get(Incident.class, id);
         modelMap.put("incident", incident);
-        modelMap.put("reviewList", null); // TODO
+        modelMap.put("reviewList", commonService.findAll(IncidentReview.class, "incident", incident)); // TODO
         return new ModelAndView("/incident/incident_view", modelMap);
     }
 
@@ -106,5 +108,30 @@ public class IncidentController extends ServiceFactory {
         }
         modelMap.put("incident", incident);
         return new ModelAndView("/incident/incident_review_create", modelMap);
+    }
+
+    @RequestMapping(value = "/saveIncidentReview.ibbl")
+    public ModelAndView saveIncidentReview(@RequestParam Long incidentId,
+                                           @RequestParam String reviewNote,
+                                           @RequestParam Long reviewerId,
+                                           @RequestParam String signedAs,
+
+                                             @RequestParam(required = false) String message) {
+        Incident incident = commonService.get(Incident.class, incidentId);
+        Map<String, Object> modelMap = ActionUtil.getModelMap("Incident Review");
+        if (!GenericValidator.isBlankOrNull(message)) {
+            modelMap.put("message", message);
+        }
+        IncidentReview review = new IncidentReview();
+        review.setReviewDate(new Date());
+        review.setReviewNote(reviewNote);
+        review.setSignedAs(signedAs);
+        review.setIncident(incident);
+        LoggedUser user = commonService.get(LoggedUser.class, reviewerId);
+        review.setReviewBy(user);
+        modelMap.put("message", "Review Note saved Successfully");
+        modelMap.put("id", incidentId);
+        commonService.save(review);
+        return new ModelAndView("redirect:/incident/viewIncident.ibbl", modelMap);
     }
 }
